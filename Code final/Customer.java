@@ -48,17 +48,19 @@ public class Customer {
 		printDetails(movies, totalAmount);
 	}
 
-    public String printDetails(Enumeration movies, double amount) {
+    public String generateDetails(Enumeration movies, double amount) {
         String result = "Rental Record for " + getName() +"\n";
         while(movies.hasMoreElements()) {
             Movie movie = (Movie) movies.nextElement();
-
             result += "\t" + movie.getTitle() + "\t" + String.valueOf(amount) + "\n";
         }
-
-        result += "Amount owed is " + String.valueOf(amount) + "\n";
-        result += "You earned " + String.valueOf(getFrequentRenterPoints()) + "frequent renter points";
-
+        result += generateFooter(result, amount);
         return result;
+    }
+
+    public String generateFooter(String details, double amount) { 
+    	details += "Amount owed is " + String.valueOf(amount) + "\n";
+        details += "You earned " + String.valueOf(getFrequentRenterPoints()) + "frequent renter points";
+        return details;
     }
 }
