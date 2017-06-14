@@ -1,7 +1,6 @@
 import java.util.Enumeration;
 import java.util.Vector;
 
-
 public class Customer {
 	private String _name;
     private int _frequentRenterPoints;
@@ -31,20 +30,14 @@ public class Customer {
 	public void calculateBill() {
 		double totalAmount = 0;
 		Enumeration movies = _movies.elements();
-
 		while(movies.hasMoreElements()){
 			double thisAmount = 0;
 			Movie movie = (Movie) movies.nextElement();
-
             movie.calculatePrice(movie, thisAmount);
-
             addFrequentRenterPoints(1);
             movie.calculateFrequentRenterPoints();
-
 			totalAmount += thisAmount;
-			
 		}
-
 		printDetails(movies, totalAmount);
 	}
 
